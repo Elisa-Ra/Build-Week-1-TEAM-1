@@ -86,10 +86,15 @@ ul li {
 /* checkbox della welcome page*/
 #checkbox_welcome {
   cursor: pointer;
-  background-color: #0b113b;
 }
 
 /* pulsante 'proceed' della welcome page*/
 .welcome_button {
   cursor: pointer;
+  font-size: 16px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 6vh;
+  padding-right: 6vh;
+  margin-left: 30vh;
 }
