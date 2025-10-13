@@ -82,3 +82,14 @@ ul li {
   font-family: "Inter", sans-serif;
   margin-top: 15vh;
 }
+
+/* checkbox della welcome page*/
+#checkbox_welcome {
+  cursor: pointer;
+  background-color: #0b113b;
+}
+
+/* pulsante 'proceed' della welcome page*/
+.welcome_button {
+  cursor: pointer;
+}
