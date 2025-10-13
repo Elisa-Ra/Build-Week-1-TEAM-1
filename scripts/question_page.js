@@ -152,15 +152,17 @@ window.onload = function () {
 
 //FUNZIONE PER IL TIMER
 
-
-
 let seconds = 60
 const timerContainer = document.getElementById("timer")
+//creo un elemento dove mostrare il timer
+const timerDislpay = document.createElement("span")
+timerDislpay.textContent = seconds
+
 setInterval(() => {
     seconds--
 }, 1000)
 
-timerContainer.appendChild(seconds)
+timerContainer.appendChild(timerDislpay)
 
 let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 
