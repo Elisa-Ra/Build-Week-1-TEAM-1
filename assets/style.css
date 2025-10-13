@@ -1,11 +1,25 @@
 /* body della pagina con l'immagine di background */
 body {
   background-image: url("./bg.jpg");
+  width: 100%;
   color: white;
+  object-fit: contain;
 }
 /* Stile per il logo di epicodo nell'header */
-/* header img {
-} */
+
+header {
+  width: 20vh;
+
+  box-sizing: border-box;
+}
+
+header img {
+  width: 100%;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  margin-left: 60%;
+  object-fit: covcontainer;
+}
 
 /* TESTO */
 h1 {
