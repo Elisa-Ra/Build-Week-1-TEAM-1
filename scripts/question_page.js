@@ -151,24 +151,60 @@ window.onload = function () {
 // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
 //FUNZIONE PER IL TIMER
-let countDownTime = 60
-
+let countDownTime = 3
+let indiceDomande = 0
 const countDownElement = document.getElementById('timer')
-const interval = setInterval(function () {
-    countDownTime--
-    countDownElement.textContent = countDownTime
-    if (countDownTime <= 0) {
-        clearInterval(interval);
-        countDownElement.textContent = 'Time is up!'
-    }
-}, 1000)
 
+const timer = function () {
+    countDownTime = 3
+    countDownElement.textContent = countDownTime
+
+
+    const interval = setInterval(function () {
+        countDownTime--
+        countDownElement.textContent = countDownTime
+        if (countDownTime <= 0) {
+            clearInterval(interval)
+
+            indiceDomande++
+
+            if (indiceDomande >= questions.length) {
+                countDownElement.textContent = "Quiz terminato"
+                document.getElementById("domande").innerHTML = ""
+                return //ferma la funzione timer
+            }
+            currentQuestion()
+            timer()
+        }
+    }, 1000)
+
+}
+timer()
+
+//FUNZIONI DOMANDE
 
 
 //let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 
 
+const currentQuestion = function () {
 
-//const quizContainer = document.getElementByID("domande")
+    const quizContainer = document.getElementById("domande")
+    quizContainer.innerHTML = ""
+
+
+
+    const domanda = questions[indiceDomande].question
+    const titoloDomande = document.createElement("h2")
+    titoloDomande.innerText = domanda
+
+
+
+    quizContainer.appendChild(titoloDomande)
+
+}
+
+currentQuestion()
+
 //const resultContainer = document.getElementByID("risposte")
 
