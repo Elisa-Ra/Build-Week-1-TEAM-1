@@ -151,23 +151,24 @@ window.onload = function () {
 // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
 //FUNZIONE PER IL TIMER
+let countDownTime = 60
 
-let seconds = 60
-const timerContainer = document.getElementById("timer")
-//creo un elemento dove mostrare il timer
-const timerDislpay = document.createElement("span")
-timerDislpay.textContent = seconds
-
-setInterval(() => {
-    seconds--
+const countDownElement = document.getElementById('timer')
+const interval = setInterval(function () {
+    countDownTime--
+    countDownElement.textContent = countDownTime
+    if (countDownTime <= 0) {
+        clearInterval(interval);
+        countDownElement.textContent = 'Time is up!'
+    }
 }, 1000)
 
-timerContainer.appendChild(timerDislpay)
-
-let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 
 
+//let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 
-const quizContainer = document.getElementByID("domande")
-const resultContainer = document.getElementByID("risposte")
+
+
+//const quizContainer = document.getElementByID("domande")
+//const resultContainer = document.getElementByID("risposte")
 
