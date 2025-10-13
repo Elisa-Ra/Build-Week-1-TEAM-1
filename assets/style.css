@@ -1,0 +1,42 @@
+/* body della pagina con l'immagine di background */
+body {
+  background-image: url("./bg.jpg");
+  color: white;
+}
+/* Stile per il logo di epicodo nell'header */
+/* header img {
+} */
+
+/* TESTO */
+h1 {
+  margin: 0.67em 0;
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  color: #d20094;
+  font-size: 25px;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+/* classe da usare per il testo azzurrino */
+.accent {
+  background-color: #00ffff;
+}
+
+/* classe per la risposta selezionata -> gradiente fucsia*/
+.answer-color {
+  background: #900080;
+  background: linear-gradient(
+    0deg,
+    rgba(144, 0, 128, 1) 0%,
+    rgba(210, 0, 148, 1) 100%
+  );
+}
