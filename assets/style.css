@@ -1,9 +1,13 @@
 /* body della pagina con l'immagine di background */
 body {
   background-image: url("./bg.jpg");
-  width: 100%;
+  background-size: cover;
+  /* background-size: contain;
+  object-fit: cover; Se si vuole fare la versione meno rettangolare (da mobile e non da desktop)*/
+  background-position: center center;
+  background-repeat: no-repeat;
   color: white;
-  object-fit: contain;
+  min-height: 100vh;
 }
 /* Stile per il logo di epicodo nell'header */
 
@@ -18,7 +22,6 @@ header img {
   margin-top: 20%;
   margin-bottom: 20%;
   margin-left: 60%;
-  object-fit: covcontainer;
 }
 
 /* TESTO */
