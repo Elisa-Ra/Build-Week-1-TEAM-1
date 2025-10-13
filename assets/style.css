@@ -1,0 +1,84 @@
+/* body della pagina con l'immagine di background */
+body {
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  /* background-size: contain;
+  object-fit: cover; Se si vuole fare la versione meno rettangolare (da mobile e non da desktop)*/
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+  min-height: 100vh;
+}
+/* Stile per il logo di epicodo nell'header */
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 10vh;
+  padding-bottom: 5vh;
+}
+
+header img {
+  width: 20vh;
+  margin-top: 5vh;
+}
+
+main {
+  padding-left: 10vh;
+}
+/* TESTO */
+h1 {
+  margin: 0.67em 0;
+  font-family: "Outfit", sans-serif;
+  font-size: 60px;
+  line-height: 80%;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  color: #d20094;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 2vh;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+b {
+  font-weight: bold;
+}
+
+/* classe da usare per il testo azzurrino */
+.accent {
+  background-color: #00ffff;
+}
+
+/* classe per la risposta selezionata -> gradiente fucsia*/
+.answer-color {
+  background: #900080;
+  background: linear-gradient(
+    0deg,
+    rgba(144, 0, 128, 1) 0%,
+    rgba(210, 0, 148, 1) 100%
+  );
+}
+
+/* LISTA WELCOME PAGE */
+
+ul {
+  margin-top: 5vh;
+  margin-left: 3vh;
+  font-family: "Inter", sans-serif;
+}
+
+ul li {
+  margin-bottom: 1vh;
+}
+/* FORM WELCOME PAGE */
+.form-welcome {
+  font-family: "Inter", sans-serif;
+  margin-top: 15vh;
+}
