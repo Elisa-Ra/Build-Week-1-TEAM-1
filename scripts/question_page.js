@@ -214,7 +214,8 @@ const nextQuestion = function () {
     } else {
         localStorage.setItem("punteggioFinale", punteggio)
         window.location.href = "result.html"
-
+        
+        localStorage.setItem("numeroDomande", questions.length)
     }
 }
 

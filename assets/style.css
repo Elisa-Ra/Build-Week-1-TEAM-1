@@ -53,7 +53,7 @@ b {
 
 /* classe da usare per il testo azzurrino */
 .accent {
-  background-color: #00ffff;
+  color: #00ffff;
 }
 
 /* classe per la risposta selezionata -> gradiente fucsia*/
@@ -97,4 +97,14 @@ ul li {
   padding-left: 6vh;
   padding-right: 6vh;
   margin-left: 30vh;
+}
+
+.stelline {
+  cursor: pointer;
+  fill: white;
+}
+
+.stelline.attiva {
+  cursor: pointer;
+  fill: #00ffff;
 }

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pagina dei risultati</title>
     <link rel="stylesheet" href="./assets/reset.css" />
 
@@ -12,31 +11,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
-        rel="stylesheet" />
-</head>
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <header>
-        <img src="./assets/epicode_logo.png" />
+      <img src="./assets/epicode_logo.png" />
     </header>
 
     <div>
-        <h1>Result</h1>
-        <p>The summary of your answers:</p>
+      <h1>Result</h1>
+      <p>The summary of your answers:</p>
     </div>
     <section>
-        <div id="div_punti">
+      <div id="div_punti"></div>
 
-        </div>
+      <div id="sbagliate"></div>
+
+      <div id="message"></div>
     </section>
     <form>
-        <div>
-            <button type="submit" class="welcome_button" formaction="feedback.html">RATE US</button>
-        </div>
+      <div>
+        <button type="submit" class="welcome_button" formaction="feedback.html">
+          RATE US
+        </button>
+      </div>
     </form>
 
     <script src="./scripts/script_result.js"></script>
-</body>
-
+  </body>
 </html>
