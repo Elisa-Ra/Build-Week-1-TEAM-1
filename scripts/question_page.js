@@ -196,7 +196,7 @@ const nextQuestion = function () {
     if (indiceDomande < questions.length) {
         currentQuestion()
         timer()
-    }
+    } else { window.location.href = "result.html" }
 }
 
 let arrayDiRisposte = []
@@ -232,8 +232,11 @@ const currentQuestion = function () {
     resultContainer.appendChild(risposte)
 
     quizContainer.appendChild(titoloDomande)
+    const counterQuestion = document.getElementById("p_question")
 
+    counterQuestion.innerText = `QUESTION ${indiceDomande + 1} / ${questions.length}`
 }
+
 
 currentQuestion()
 
@@ -244,4 +247,4 @@ currentQuestion()
 
 
 console.log(arrayDiRisposte)
-//
+
