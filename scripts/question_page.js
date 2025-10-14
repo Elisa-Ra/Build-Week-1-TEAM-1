@@ -153,8 +153,10 @@ window.onload = function () {
 //FUNZIONE PER IL TIMER
 let countDownTime = 20
 let indiceDomande = 0
-const countDownElement = document.getElementById('timer')
 let intervalId = null
+let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
+
+const countDownElement = document.getElementById('timer')
 
 const timer = function () {
     if (intervalId) {
@@ -171,15 +173,16 @@ const timer = function () {
         if (countDownTime <= 0) {
             clearInterval(intervalId)
             intervalId = null
-            indiceDomande++
-
-            if (indiceDomande >= questions.length) {
-                countDownElement.textContent = "Quiz terminato"
-                document.getElementById("domande").innerHTML = ""
-                return //ferma la funzione timer
-            }
-            currentQuestion()
-            timer()
+            nextQuestion() //PASSA AUTOMATICAMENTE ALLA PROSSIMA DOMANDA
+            /* indiceDomande++
+ 
+             if (indiceDomande >= questions.length) {
+                 countDownElement.textContent = "Quiz terminato"
+                 document.getElementById("domande").innerHTML = ""
+                 return //ferma la funzione timer
+             }
+             currentQuestion()
+             timer()*/
         }
     }, 1000)
 
@@ -188,15 +191,31 @@ timer()
 
 //FUNZIONI DOMANDE
 
-
-//let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 const nextQuestion = function () {
+    const risposte = document.getElementsByName("risposta")
+    let rispostaSelezionata = ""
+
+    for (let i = 0; i < risposte.length; i++) {
+        if (risposte[i].checked) {
+            rispostaSelezionata = risposte[i].value
+            break
+        }
+    }
+
+    if (rispostaSelezionata === questions[indiceDomande].correct_answer) {
+        punteggio++;
+    }
+    console.log("Punteggio:", punteggio)
 
     indiceDomande++
     if (indiceDomande < questions.length) {
         currentQuestion()
         timer()
-    } else { window.location.href = "result.html" }
+    } else {
+        localStorage.setItem("punteggioFinale", punteggio)
+        window.location.href = "result.html"
+
+    }
 }
 
 let arrayDiRisposte = []
@@ -206,24 +225,22 @@ const currentQuestion = function () {
     const quizContainer = document.getElementById("domande")
     quizContainer.innerHTML = ""
 
-
-
     const domanda = questions[indiceDomande].question
     const titoloDomande = document.createElement("h2")
     titoloDomande.innerText = domanda
 
-    const resultContainer = document.getElementById("risposte")
+    const resultContainer = document.getElementById("risposte-div")
     resultContainer.innerHTML = ""
 
-    let arrayDiRisposte = [questions[indiceDomande].correct_answer, ...questions[indiceDomande].incorrect_answers]
-
+    const arrayDiRisposte = [questions[indiceDomande].correct_answer, ...questions[indiceDomande].incorrect_answers]
+    arrayDiRisposte.sort(() => Math.random() - 0.5) // mescola le risposte
 
     const risposte = document.createElement("div")
     for (let i = 0; i < arrayDiRisposte.length; i++) {
         risposte.innerHTML += `
     
-    <input type="radio" onclick="nextQuestion()" id="bottone_risposta" />
-    <label for="bottone_risposta">${arrayDiRisposte[i]}</label>
+    <input type="radio" onclick="nextQuestion()" name="risposta" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
+    <label for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
       
     `
     }
@@ -235,6 +252,7 @@ const currentQuestion = function () {
     const counterQuestion = document.getElementById("p_question")
 
     counterQuestion.innerText = `QUESTION ${indiceDomande + 1} / ${questions.length}`
+
 }
 
 
@@ -243,8 +261,4 @@ currentQuestion()
 //FUNZIONI RISPOSTE
 
 
-
-
-
-console.log(arrayDiRisposte)
 
