@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question page</title>
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome page</title>
-  <link rel="stylesheet" href="./assets/reset.css" />
-  <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
-    rel="stylesheet" />
-</head>
+  <body>
+    <header>
+      <div>
+        <img src="assets/epicode_logo.png" />
+      </div>
+      <!-- div in cui comparirà il timer ad ogni domanda -->
+      <div id="timer"></div>
+    </header>
 
-<body>
-  <header>
-    <div>
-      <img src="assets/epicode_logo.png" />
-    </div>
-    <!-- div in cui comparirà il timer ad ogni domanda -->
-    <div id="timer">
-    </div>
-  </header>
+    <main>
+      <!-- sezione domande -->
 
-  <main>
+      <div id="domande"></div>
+      <!-- sezione risposte -->
+      <div id="risposte-div"></div>
+      <!-- BOTTONE NEXT -->
+      <div>
+        <p id="p_question"></p>
+      </div>
+    </main>
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <!-- sezione domande -->
 
     <div id="domande">
@@ -46,3 +57,13 @@
 </body>
 
 </html>
+=======
+    <script src="./scripts/question_page.js"></script>
+  </body>
+</html>
+>>>>>>> Stashed changes
+=======
+    <script src="./scripts/question_page.js"></script>
+  </body>
+</html>
+>>>>>>> Stashed changes
