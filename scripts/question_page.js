@@ -151,21 +151,26 @@ window.onload = function () {
 // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
 //FUNZIONE PER IL TIMER
-let countDownTime = 3
+let countDownTime = 20
 let indiceDomande = 0
 const countDownElement = document.getElementById('timer')
+let intervalId = null
 
 const timer = function () {
-    countDownTime = 3
+    if (intervalId) {
+        clearInterval(intervalId)
+    }
+
+    countDownTime = 20
     countDownElement.textContent = countDownTime
 
 
-    const interval = setInterval(function () {
+    intervalId = setInterval(function () {
         countDownTime--
         countDownElement.textContent = countDownTime
         if (countDownTime <= 0) {
-            clearInterval(interval)
-
+            clearInterval(intervalId)
+            intervalId = null
             indiceDomande++
 
             if (indiceDomande >= questions.length) {
@@ -185,7 +190,16 @@ timer()
 
 
 //let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
+const nextQuestion = function () {
 
+    indiceDomande++
+    if (indiceDomande < questions.length) {
+        currentQuestion()
+        timer()
+    }
+}
+
+let arrayDiRisposte = []
 
 const currentQuestion = function () {
 
@@ -198,7 +212,24 @@ const currentQuestion = function () {
     const titoloDomande = document.createElement("h2")
     titoloDomande.innerText = domanda
 
+    const resultContainer = document.getElementById("risposte")
+    resultContainer.innerHTML = ""
 
+    let arrayDiRisposte = [questions[indiceDomande].correct_answer, ...questions[indiceDomande].incorrect_answers]
+
+
+    const risposte = document.createElement("div")
+    for (let i = 0; i < arrayDiRisposte.length; i++) {
+        risposte.innerHTML += `
+    
+    <input type="radio" onclick="nextQuestion()" id="bottone_risposta" />
+    <label for="bottone_risposta">${arrayDiRisposte[i]}</label>
+      
+    `
+    }
+
+
+    resultContainer.appendChild(risposte)
 
     quizContainer.appendChild(titoloDomande)
 
@@ -206,5 +237,11 @@ const currentQuestion = function () {
 
 currentQuestion()
 
-//const resultContainer = document.getElementByID("risposte")
+//FUNZIONI RISPOSTE
 
+
+
+
+
+console.log(arrayDiRisposte)
+//
