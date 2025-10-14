@@ -2,8 +2,8 @@
 body {
   background-image: url("./bg.jpg");
   background-size: cover;
-  /* background-size: contain;
-  object-fit: cover; Se si vuole fare la versione meno rettangolare (da mobile e non da desktop)*/
+  /* background-size: contain; */
+  /* object-fit: cover; Se si vuole fare la versione meno rettangolare (da mobile e non da desktop) */
   background-position: center center;
   background-repeat: no-repeat;
   color: white;
@@ -81,4 +81,20 @@ ul li {
 .form-welcome {
   font-family: "Inter", sans-serif;
   margin-top: 15vh;
+}
+
+/* checkbox della welcome page*/
+#checkbox_welcome {
+  cursor: pointer;
+}
+
+/* pulsante 'proceed' della welcome page*/
+.welcome_button {
+  cursor: pointer;
+  font-size: 16px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 6vh;
+  padding-right: 6vh;
+  margin-left: 30vh;
 }
