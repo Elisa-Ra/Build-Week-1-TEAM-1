@@ -2,8 +2,8 @@
 body {
   background-image: url("./bg.jpg");
   background-size: cover;
-  /* background-size: contain;
-  object-fit: cover; Se si vuole fare la versione meno rettangolare (da mobile e non da desktop)*/
+  /* background-size: contain; */
+  /* object-fit: cover; Se si vuole fare la versione meno rettangolare (da mobile e non da desktop) */
   background-position: center center;
   background-repeat: no-repeat;
   color: white;
