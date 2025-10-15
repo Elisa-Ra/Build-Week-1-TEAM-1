@@ -72,8 +72,8 @@ b {
 }
 
 /* LISTA WELCOME PAGE */
-#welcome-page  { padding-left: 13%;
-
+#welcome-page {
+  padding-left: 13%;
 }
 
 ul {
@@ -96,20 +96,14 @@ ul li {
   width: 20px;
   height: 20px;
   border: 2px solid white;
- 
+
   accent-color: #00ffff;
   background-color: transparent; /* quadratino trasparente */
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
-
- 
-
 }
-
- 
-
 
 /* pulsante 'proceed' della welcome page*/
 .welcome_button {
@@ -119,20 +113,14 @@ ul li {
   padding: 2vh 6vh;
   margin-left: 30vh;
   border: none;
-  
-  color: #0B113B;
+
+  color: #0b113b;
   background-color: #00ffff;
   position: relative;
- box-shadow:
-    0 0 15px #00ffff,
-    0 0 30px #00ffff,
-    0 0 45px #00ffff;
-  
- 
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
 }
 
-/*stile del feedback*/
-
+/*Stile del feedback*/
 /* contenitore principale del feedback */
 .feedback {
   text-align: center;
@@ -248,11 +236,6 @@ fatto in js*/
 .stelline {
   cursor: pointer;
   fill: white;
-}
-
-.stelline.attiva {
-  cursor: pointer;
-  fill: #00ffff;
 }
 
 /* RESULT PAGE */
