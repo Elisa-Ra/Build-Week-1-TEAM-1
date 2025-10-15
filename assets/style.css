@@ -67,6 +67,9 @@ b {
 }
 
 /* LISTA WELCOME PAGE */
+#welcome-page  { padding-left: 13%;
+
+}
 
 ul {
   margin-top: 5vh;
@@ -85,18 +88,42 @@ ul li {
 
 /* checkbox della welcome page*/
 #checkbox_welcome {
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+ 
+  accent-color: #00ffff;
+  background-color: transparent; /* quadratino trasparente */
   cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+
+ 
+
 }
+
+ 
+
 
 /* pulsante 'proceed' della welcome page*/
 .welcome_button {
   cursor: pointer;
   font-size: 16px;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  padding-left: 6vh;
-  padding-right: 6vh;
+  font-weight: bold;
+  padding: 2vh 6vh;
   margin-left: 30vh;
+  border: none;
+  
+  color: #0B113B;
+  background-color: #00ffff;
+  position: relative;
+ box-shadow:
+    0 0 15px #00ffff,
+    0 0 30px #00ffff,
+    0 0 45px #00ffff;
+  
+ 
 }
 
 .stelline {
