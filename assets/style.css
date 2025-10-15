@@ -23,6 +23,9 @@ header img {
   margin-top: 5vh;
 }
 
+main {
+  padding-left: 10vh;
+}
 /* TESTO */
 h1 {
   margin-bottom: 1vh;
@@ -54,6 +57,7 @@ p {
 
 b {
   font-weight: bold;
+  font-family: "Inter", sans-serif;
 }
 
 /* classe da usare per il testo azzurrino */
@@ -72,10 +76,14 @@ b {
 }
 
 /* LISTA WELCOME PAGE */
-#welcome-page  { padding-left: 13%;
-
+#welcome-page {
+  padding-left: 4%;
 }
 
+#welcome-titolo {
+  margin-top: 8vh;
+  margin-bottom: 5vh;
+}
 ul {
   margin-top: 5vh;
   margin-left: 3vh;
@@ -96,20 +104,14 @@ ul li {
   width: 20px;
   height: 20px;
   border: 2px solid white;
- 
+
   accent-color: #00ffff;
-  background-color: transparent; /* quadratino trasparente */
+
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
-
- 
-
 }
-
- 
-
 
 /* pulsante 'proceed' della welcome page*/
 .welcome_button {
@@ -119,20 +121,14 @@ ul li {
   padding: 2vh 6vh;
   margin-left: 30vh;
   border: none;
-  
-  color: #0B113B;
+
+  color: #0b113b;
   background-color: #00ffff;
   position: relative;
- box-shadow:
-    0 0 15px #00ffff,
-    0 0 30px #00ffff,
-    0 0 45px #00ffff;
-  
- 
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
 }
 
-/*stile del feedback*/
-
+/*Stile del feedback*/
 /* contenitore principale del feedback */
 .feedback {
   text-align: center;
@@ -144,6 +140,8 @@ ul li {
 
 .feedback h1 {
   font-size: 50px;
+  margin-top: 10vh;
+  font-weight: bold;
 }
 
 /* titolo sopra il campo di testo */
@@ -156,12 +154,15 @@ ul li {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 60px;
+  margin-bottom: 5vh;
 }
 
 .feedback p {
   font-family: "Outfit", sans-serif;
   font-size: 22px;
   font-weight: 200;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 /* input/textarea con sottolineatura magenta */
@@ -178,7 +179,7 @@ ul li {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 2px solid #d20094;
   padding: 12px 6px;
   color: #e9eef8;
   font-size: 16px;
@@ -197,7 +198,7 @@ ul li {
 
 .input-underline input:focus,
 .input-underline textarea:focus {
-  border-bottom-color: #d20094;
+  border-bottom-color: #00ffff;
 }
 
 /* bottone finale "MORE INFO" */
@@ -267,7 +268,7 @@ fatto in js*/
 
 #chart {
   width: 100%;
-  max-width: 600px;
+  max-width: 90vh;
   margin: 0 auto;
   position: relative;
 }
@@ -285,13 +286,13 @@ fatto in js*/
 
 #tiny_p {
   font-size: 0.7rem;
-  font-weight: 100;
+  font-weight: 300;
   margin-top: 10%;
+  max-width: 90vh;
 }
 
 #myChart {
   width: 100%;
-  height: auto;
   aspect-ratio: 1 / 1;
   display: block;
   margin: 0 auto;
@@ -317,7 +318,7 @@ fatto in js*/
 }
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* div_punti | contenitore | sbagliate */
+  grid-template-columns: 1fr 2fr 1fr; /* div_punti | contenitore | sbagliate */
   gap: 0;
   margin-top: 2rem;
   width: 100%;
@@ -335,4 +336,15 @@ fatto in js*/
   box-sizing: border-box;
   text-align: center;
   margin-top: 5vh;
+}
+#button_result {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  font-weight: bold;
+  font-size: 18px;
 }

@@ -27,8 +27,8 @@ Check your email (including</br> promotions / spam folder)
     } else {
       const divMessage = document.getElementById("message")
       divMessage.innerHTML = `<b>Sorry!</b> <br>
-        <p> You didn't pass the exam.
-        Try next time.
+        <p> You didn't pass the exam. </br>
+        Try again next time.
         </p>`
     }
   }
