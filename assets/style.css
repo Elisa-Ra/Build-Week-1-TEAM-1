@@ -125,16 +125,130 @@ ul li {
   color: #0b113b;
   background-color: #00ffff;
   position: relative;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
 }
 
+/*Stile del feedback*/
+/* contenitore principale del feedback */
+.feedback {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.feedback h1 {
+  font-size: 50px;
+  margin-top: 10vh;
+  font-weight: bold;
+}
+
+/* titolo sopra il campo di testo */
+.feedback h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 30px;
+  font-weight: 200;
+  color: #f4f6fb;
+  margin: 0 0 1.5vh 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 60px;
+  margin-bottom: 5vh;
+}
+
+.feedback p {
+  font-family: "Outfit", sans-serif;
+  font-size: 22px;
+  font-weight: 200;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+/* input/textarea con sottolineatura magenta */
+.input-underline {
+  width: 70%;
+  max-width: 760px;
+  /*margin: 1vh 0 3vh 0;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-underline input,
+.input-underline textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #d20094;
+  padding: 12px 6px;
+  color: #e9eef8;
+  font-size: 16px;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  transition: border-color 0.18s ease;
+  resize: vertical;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.input-underline input::placeholder,
+.input-underline textarea::placeholder {
+  border-bottom-color: #d20094;
+}
+
+.input-underline input:focus,
+.input-underline textarea:focus {
+  border-bottom-color: #00ffff;
+}
+
+/* bottone finale "MORE INFO" */
+.button-feedback {
+  display: inline-block;
+  color: #0d2839;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 18px 46px;
+  border: none;
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  font-size: 18px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 40px;
+}
+
+.luminoso {
+  background-color: #00ffff;
+  box-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff;
+}
+
+/* singola stella */
+.star {
+  display: inline-block;
+}
+
+.stars {
+  text-align: center;
+  margin: 3vh 0;
+  padding-bottom: 10px;
+}
+
+.stars span {
+  display: inline-block;
+  margin-right: 2vw; /* spazio tra le stelle */
+  cursor: pointer;
+}
+
+.stars svg {
+  width: 40px;
+  height: auto;
+}
+
+/*serve per colorare le stelline
+fatto in js*/
 .stelline {
   cursor: pointer;
   fill: white;
-}
-
-.stelline.attiva {
-  cursor: pointer;
-  fill: #00ffff;
 }
 
 /* RESULT PAGE */
