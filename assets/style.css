@@ -15,7 +15,7 @@ header {
   width: 100%;
   box-sizing: border-box;
   padding-left: 10vh;
-  padding-bottom: 5vh;
+  padding-bottom: 2vh;
 }
 
 header img {
@@ -107,4 +107,46 @@ ul li {
 .stelline.attiva {
   cursor: pointer;
   fill: #00ffff;
+}
+
+/* RESULT PAGE */
+
+.contenitore {
+  width: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  height: fit-content;
+}
+#message {
+  width: 150px; /* Necessario per centrare */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+}
+#chart {
+  position: absolute;
+  width: 100%;
+  max-width: 600px;
+  right: 33%;
+  top: 50%;
+
+  z-index: 1;
+}
+#myChart {
+  width: 100%;
+  max-width: 600px;
+}
+
+.title_result {
+  width: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+#div_punti {
+  float: left;
+  z-index: 3;
 }
