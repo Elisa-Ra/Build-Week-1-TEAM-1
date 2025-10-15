@@ -23,6 +23,9 @@ header img {
   margin-top: 5vh;
 }
 
+main {
+  padding-left: 10vh;
+}
 /* TESTO */
 h1 {
   margin-bottom: 1vh;
@@ -54,6 +57,7 @@ p {
 
 b {
   font-weight: bold;
+  font-family: "Inter", sans-serif;
 }
 
 /* classe da usare per il testo azzurrino */
@@ -73,9 +77,13 @@ b {
 
 /* LISTA WELCOME PAGE */
 #welcome-page {
-  padding-left: 13%;
+  padding-left: 4%;
 }
 
+#welcome-titolo {
+  margin-top: 8vh;
+  margin-bottom: 5vh;
+}
 ul {
   margin-top: 5vh;
   margin-left: 3vh;
@@ -98,7 +106,7 @@ ul li {
   border: 2px solid white;
 
   accent-color: #00ffff;
-  background-color: transparent; /* quadratino trasparente */
+
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
@@ -250,7 +258,7 @@ fatto in js*/
 
 #chart {
   width: 100%;
-  max-width: 600px;
+  max-width: 90vh;
   margin: 0 auto;
   position: relative;
 }
@@ -268,13 +276,13 @@ fatto in js*/
 
 #tiny_p {
   font-size: 0.7rem;
-  font-weight: 100;
+  font-weight: 300;
   margin-top: 10%;
+  max-width: 90vh;
 }
 
 #myChart {
   width: 100%;
-  height: auto;
   aspect-ratio: 1 / 1;
   display: block;
   margin: 0 auto;
@@ -300,7 +308,7 @@ fatto in js*/
 }
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* div_punti | contenitore | sbagliate */
+  grid-template-columns: 1fr 2fr 1fr; /* div_punti | contenitore | sbagliate */
   gap: 0;
   margin-top: 2rem;
   width: 100%;
@@ -318,4 +326,15 @@ fatto in js*/
   box-sizing: border-box;
   text-align: center;
   margin-top: 5vh;
+}
+#button_result {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  font-weight: bold;
+  font-size: 18px;
 }
