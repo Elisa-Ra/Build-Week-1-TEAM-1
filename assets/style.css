@@ -140,6 +140,8 @@ ul li {
 
 .feedback h1 {
   font-size: 50px;
+  margin-top: 10vh;
+  font-weight: bold;
 }
 
 /* titolo sopra il campo di testo */
@@ -152,12 +154,15 @@ ul li {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 60px;
+  margin-bottom: 5vh;
 }
 
 .feedback p {
   font-family: "Outfit", sans-serif;
   font-size: 22px;
   font-weight: 200;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 /* input/textarea con sottolineatura magenta */
@@ -174,7 +179,7 @@ ul li {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 2px solid #d20094;
   padding: 12px 6px;
   color: #e9eef8;
   font-size: 16px;
@@ -193,7 +198,7 @@ ul li {
 
 .input-underline input:focus,
 .input-underline textarea:focus {
-  border-bottom-color: #d20094;
+  border-bottom-color: #00ffff;
 }
 
 /* bottone finale "MORE INFO" */
