@@ -75,10 +75,14 @@ b {
 }
 
 /* LISTA WELCOME PAGE */
-#welcome-page  { padding-left: 13%;
+#welcome-page  { padding-left: 4%;
 
 }
 
+#welcome-titolo  {
+  margin-top: 8vh;
+  margin-bottom: 5vh;
+}
 ul {
   margin-top: 5vh;
   margin-left: 3vh;
@@ -101,7 +105,7 @@ ul li {
   border: 2px solid white;
  
   accent-color: #00ffff;
-  background-color: transparent; /* quadratino trasparente */
+  
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
@@ -126,10 +130,7 @@ ul li {
   color: #0B113B;
   background-color: #00ffff;
   position: relative;
- box-shadow:
-    0 0 15px #00ffff,
-    0 0 30px #00ffff,
-    0 0 45px #00ffff;
+ 
   
  
 }
