@@ -28,7 +28,7 @@ main {
 }
 /* TESTO */
 h1 {
-  margin: 0.67em 0;
+  margin-bottom: 1vh;
   font-family: "Outfit", sans-serif;
   font-size: 60px;
   line-height: 80%;
@@ -39,6 +39,14 @@ h3 {
   color: #d20094;
   font-size: 25px;
   font-weight: bold;
+  margin-bottom: 2vh;
+}
+
+h4 {
+  font-family: "Outfit", sans-serif;
+  color: white;
+  font-size: 20px;
+
   margin-bottom: 2vh;
 }
 
@@ -112,31 +120,43 @@ ul li {
 /* RESULT PAGE */
 
 .contenitore {
-  width: 50vh;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
   box-sizing: border-box;
-  height: fit-content;
+  text-align: center;
+
+  max-width: 100%;
 }
-#message {
-  width: 150px; /* Necessario per centrare */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-}
+
 #chart {
-  position: absolute;
   width: 100%;
   max-width: 600px;
-  right: 33%;
-  top: 50%;
-
-  z-index: 1;
+  margin: 0 auto;
+  position: relative;
 }
+
+#message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none; /* evita che interferisca con il grafico */
+  font-size: 1.2rem;
+  width: 40%;
+}
+
+#tiny_p {
+  font-size: 0.7rem;
+  font-weight: 100;
+  margin-top: 10%;
+}
+
 #myChart {
   width: 100%;
-  max-width: 600px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  margin: 0 auto;
 }
 
 .title_result {
@@ -144,9 +164,37 @@ ul li {
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
+  text-align: center;
 }
 
 #div_punti {
-  float: left;
-  z-index: 3;
+  box-sizing: border-box;
+  text-align: center;
+  align-self: center;
+}
+#sbagliate {
+  box-sizing: border-box;
+  text-align: center;
+  align-self: center;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* div_punti | contenitore | sbagliate */
+  gap: 0;
+  margin-top: 2rem;
+  width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.result_button {
+  width: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 5vh;
 }

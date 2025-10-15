@@ -12,8 +12,8 @@ const punteggio_fun = function () {
   const percentualeSbagliate = (punteggioSbagliato / numDomande) * 100
 
   //mostra le percentuali del punteggio giuste e sbagliate
-  totPunteggio.innerHTML = `<p>Correct: ${percentualeGiuste}% ${punteggio}/${numDomande} </p>`
-  totSbagliate.innerHTML = `<p>Wrong: ${percentualeSbagliate}% ${punteggioSbagliato}/${numDomande} </p>`
+  totPunteggio.innerHTML = `<h1>Correct </br><b>${percentualeGiuste}%</b></h1> </br><p>${punteggio}/${numDomande} questions</p>`
+  totSbagliate.innerHTML = `<h1>Wrong </br><b>${percentualeSbagliate}%</b></h1> </br><p>${punteggioSbagliato}/${numDomande} questions </p>`
 
   //Funzione che mostra messaggio
   const messageResult = function () {
@@ -21,8 +21,8 @@ const punteggio_fun = function () {
       const divMessage = document.getElementById("message")
       divMessage.innerHTML = `<b>Congratulations!<b/>
         <p class="accent">You passed the exam.</p>
-<p>We'll send you the certificate in few minutes.
-Check your email (including promotions / spam folder)
+<p id="tiny_p">We'll send you the certificate</br> in few minutes. </br>
+Check your email (including</br> promotions / spam folder)
         </p>`
     } else {
       const divMessage = document.getElementById("message")
@@ -42,8 +42,8 @@ const punteggioSbagliato = numDomande - punteggio
 
 // CANVAS
 
-var yValues = [punteggioSbagliato, punteggio]
-var barColors = ["#d20094", "#00ffff"]
+const yValues = [punteggioSbagliato, punteggio]
+const barColors = ["#d20094", "#00ffff"]
 
 // chart
 

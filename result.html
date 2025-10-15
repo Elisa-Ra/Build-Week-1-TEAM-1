@@ -24,21 +24,24 @@
 
     <div class="title_result">
       <h1>Results</h1>
-      <p>The summary of your answers:</p>
+      <h4>The summary of your answers:</h4>
     </div>
     <section>
-      <div class="contenitore">
-        <div id="message"></div>
-        <div id="chart">
-          <canvas id="myChart"></canvas>
-        </div>
+      <div class="wrapper">
         <div id="div_punti"></div>
+        <div class="contenitore">
+          <div id="chart">
+            <div id="message"></div>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+
         <div id="sbagliate"></div>
       </div>
     </section>
     <form>
-      <div>
-        <button type="submit" class="welcome_button" formaction="feedback.html">
+      <div class="result_button">
+        <button type="submit" id="button_result" formaction="feedback.html">
           RATE US
         </button>
       </div>
