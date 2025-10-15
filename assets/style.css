@@ -251,6 +251,11 @@ fatto in js*/
   fill: white;
 }
 
+.stelline.attiva {
+  cursor: pointer;
+  fill: #00ffff;
+}
+
 /* RESULT PAGE */
 
 .contenitore {
