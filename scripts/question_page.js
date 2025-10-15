@@ -145,6 +145,40 @@ window.onload = function () {
 // Se stai mostrando tutte le domande nello stesso momento, controlla semplicemente se i radio button selezionati sono === correct_answer
 // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
+// GRAFICO
+let timerChart = null
+
+const updateTimerChart = function () {
+  const elapsed = 20 - countDownTime
+  const remaining = countDownTime
+
+  const data = {
+    datasets: [
+      {
+        data: [elapsed, remaining],
+        backgroundColor: ["rgba(185, 184, 184, 0.67)", "#00ffff"],
+        borderWidth: 0,
+      },
+    ],
+  }
+
+  if (!timerChart) {
+    timerChart = new Chart("timerChart", {
+      type: "doughnut",
+      data: data,
+      options: {
+        cutoutPercentage: 70,
+        plugins: {
+          tooltip: { enabled: false },
+        },
+      },
+    })
+  } else {
+    timerChart.data.datasets[0].data = [elapsed, remaining]
+    timerChart.update()
+  }
+}
+
 //FUNZIONE PER IL TIMER
 let countDownTime = 20
 let indiceDomande = 0
@@ -164,6 +198,8 @@ const timer = function () {
   intervalId = setInterval(function () {
     countDownTime--
     countDownElement.textContent = countDownTime
+    updateTimerChart()
+
     if (countDownTime <= 0) {
       clearInterval(intervalId)
       intervalId = null
@@ -252,5 +288,3 @@ const currentQuestion = function () {
 }
 
 currentQuestion()
-
-//FUNZIONI RISPOSTE

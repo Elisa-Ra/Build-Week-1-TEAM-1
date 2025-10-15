@@ -266,7 +266,7 @@ fatto in js*/
   max-width: 100%;
 }
 
-#chart {
+.chart {
   width: 100%;
   max-width: 90vh;
   margin: 0 auto;
@@ -347,4 +347,9 @@ fatto in js*/
   border: 2px solid white;
   font-weight: bold;
   font-size: 18px;
+}
+/* QUESTIONS CHART*/
+#timerChart {
+  height: 500px;
+  width: 500px;
 }
