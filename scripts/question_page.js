@@ -124,6 +124,95 @@ const questions = [
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
+
+  //Aggiungiamo le domande difficili
+  {
+  type:"multiple",
+  difficulty:"hard",
+  category:"Science: Computers",
+    question:"Which SQL keyword is used to fetch data from a database?",
+    correct_answer:"SELECT",
+    incorrect_answers:["INDEX","VALUES","EXEC"]},
+
+{
+  type:"boolean",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"Time on Computers is measured via the EPOX System.",
+  correct_answer:"False",
+  incorrect_answers:["True"]},
+
+{
+  type:"multiple",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"In networking, what does OSPF stand for?",
+  correct_answer:"Open Shortest Path First",
+  incorrect_answers:["Order State Part First","Order Sense Ping Find","Open Signal Path Finder"]},
+
+{
+  type:"multiple",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"The programming language &#039;Swift&#039; was created to replace what other programming language?",
+  correct_answer:"Objective-C",
+  incorrect_answers:["C#","Ruby","C++"]},
+
+{
+  type:"multiple",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"Which computer language would you associate Django framework with?",
+  correct_answer:"Python",
+  incorrect_answers:["C#","C++","Java"]},
+
+{
+  type:"multiple",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"How many values can a single byte represent?",
+  correct_answer:"256",
+  incorrect_answers:["8","1","1024"]},
+
+{
+  type:"boolean",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"In most programming languages, the operator ++ is equivalent to the statement &quot;+= 1&quot;.",
+  correct_answer:"True",
+  incorrect_answers:["False"]},
+
+{
+  type:"multiple",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"How many kilobytes in one gigabyte (in decimal)?",
+  correct_answer:"1000000",
+  incorrect_answers:["1024","1000","1048576"]},
+
+{
+  type:"boolean",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"The Windows ME operating system was released in the year 2000.",
+  correct_answer:"True",
+  incorrect_answers:["False"]},
+
+{
+  type:"boolean",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"RAM stands for Random Access Memory.",
+  correct_answer:"True",
+  incorrect_answers:["False"]},
+
+{
+  type:"boolean",
+  difficulty:"hard",
+  category:"Science: Computers",
+  question:"JavaScript derives from a later version of Java",
+  correct_answer:"False",
+  incorrect_answers:["True"]}
 ]
 
 window.onload = function () {
@@ -214,6 +303,7 @@ timer()
 
 const nextQuestion = function () {
   const risposte = document.getElementsByName("risposta")
+  const feedEl = document.getElementById("feed-question")
   let rispostaSelezionata = ""
 
   for (let i = 0; i < risposte.length; i++) {
@@ -225,6 +315,11 @@ const nextQuestion = function () {
 
   if (rispostaSelezionata === questions[indiceDomande].correct_answer) {
     punteggio++
+    feedEl.innerText="✅CORRECT!"
+    feedEl.style.color="green"
+  }else{
+    feedEl.innerText="❌WRONG!"
+    feedEl.style.color="red"
   }
   console.log("Punteggio:", punteggio)
 
