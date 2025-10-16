@@ -40,30 +40,37 @@
           Changing broswer tab or opening other window will
           <b>invalidate the question.</b>
         </li>
-        <li>This exam will take approx.<b>0-5 minutes.</b></li>
+        <li>This exam will take approx.<b> 0-5 minutes.</b></li>
       </ul>
 
       <form class="form-welcome">
-        <!--Seleziona la difficoltà-->
-        <label for="livello">Scegli il livello di difficoltà</label>
-        <select id="livello" required>
-          <option value="">Select difficulty</option>
-          <option value="easy">Easy</option>
-          <option value="hard">Hard</option></select
-        ><br />
-
+        <div class="div_form">
+          <label for="livello">Choose a difficulty level</label>
+          <select id="livello" required>
+            <option value="">Select difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="hard">Hard</option></select
+          ><br />
+        </div>
         <input type="checkbox" id="checkbox_welcome" required />
         <label for="checkbox_welcome"
           >I promise to answer myself without help from anyone</label
         >
         <button
-          onclick="filterQuestion()"
           class="welcome_button luminoso"
+          onclick="salvaLivello()"
+          type="submit"
           formaction="question.html"
         >
           PROCEED
         </button>
       </form>
     </main>
+    <script>
+      function salvaLivello() {
+        const livello = document.getElementById("livello").value;
+        localStorage.setItem("livelloSelezionato", livello);
+      }
+    </script>
   </body>
 </html>

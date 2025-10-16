@@ -199,23 +199,14 @@ const questions = [
   incorrect_answers:["1024","1000","1048576"]
 },
 
-{
-  type:"boolean",
-  difficulty:"hard",
-  category:"Science: Computers",
-  question:"The Windows ME operating system was released in the year 2000.",
-  correct_answer:"True",
-  incorrect_answers:["False"]
-},
-
-{
-  type:"boolean",
-  difficulty:"hard",
-  category:"Science: Computers",
-  question:"JavaScript derives from a later version of Java",
-  correct_answer:"False",
-  incorrect_answers:["True"]
-}
+  {
+    type: "boolean",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "JavaScript derives from a later version of Java",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
 ]
 
 window.onload = function () {
@@ -243,27 +234,9 @@ let countDownTime = 20
 let indiceDomande = 0
 let intervalId = null
 let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
-let filteredQuestions = []
 
-//funzione filtro
-const filterQuestion = function(){
-const levelSelect = document.getElementById("livello")
-const valSelect = levelSelect.value
 
-const domandeFiltrate = questions.filter(q => q.difficulty === valSelect)
-
- if (domandeFiltrate.length === 0) {
-    alert("Nessuna domanda trovata per questo livello!")
-    return
-  }
-
-filteredQuestions = domandeFiltrate
-indiceDomande = 0
-punteggio = 0
-console.log(filteredQuestions)
-currentQuestion()
-//timer()
-}
+//funzione filtros
 
 // GRAFICO
 const updateTimerChart = function () {
@@ -295,6 +268,26 @@ const updateTimerChart = function () {
     timerChart.data.datasets[0].data = [elapsed, remaining]
     timerChart.update()
   }
+}
+
+//FILTRA LE DOMANDE
+
+let filteredQuestions = []
+
+function filtraDomandePerLivello() {
+  const livello = localStorage.getItem("livelloSelezionato")
+
+  filteredQuestions = questions.filter((q) => q.difficulty === livello)
+
+  if (filteredQuestions.length === 0) {
+    alert("Nessuna domanda trovata per il livello selezionato!")
+    return
+  }
+
+  indiceDomande = 0
+  punteggio = 0
+  currentQuestion()
+  timer()
 }
 
 //FUNZIONE PER IL TIMER
@@ -329,6 +322,42 @@ const timer = function () {
 timer()
 
 //FUNZIONI DOMANDE
+
+const nextQuestion = function () {
+  const risposte = document.getElementsByName("risposta")
+  const feedEl = document.getElementById("feed-question")
+  let rispostaSelezionata = ""
+
+  for (let i = 0; i < risposte.length; i++) {
+    if (risposte[i].checked) {
+      rispostaSelezionata = risposte[i].value
+      break
+    }
+  }
+
+  if (rispostaSelezionata === filteredQuestions[indiceDomande].correct_answer) {
+    punteggio++
+    feedEl.innerText = "✅CORRECT!"
+    feedEl.style.color = "green"
+  } else {
+    feedEl.innerText = "❌WRONG!"
+    feedEl.style.color = "red"
+  }
+  console.log("Punteggio:", punteggio)
+
+  indiceDomande++
+  if (indiceDomande < filteredQuestions.length) {
+    currentQuestion()
+    timer()
+  } else {
+    localStorage.setItem("punteggioFinale", punteggio)
+    window.location.href = "result.html"
+
+    localStorage.setItem("numeroDomande", filteredQuestions.length)
+  }
+}
+
+let arrayDiRisposte = []
 
 const currentQuestion = function () {
   const quizContainer = document.getElementById("domande")
@@ -366,49 +395,6 @@ const currentQuestion = function () {
   counterQuestion.innerHTML = `QUESTION ${
     indiceDomande + 1
   } <b id="indice_rosa">/ ${filteredQuestions.length}</b>`
-
-   risposte.querySelectorAll("input").forEach(input => {
-    input.addEventListener("click", nextQuestion)
-  })
 }
 
-let arrayDiRisposte = []
-
-const nextQuestion = function () {
-  const risposte = document.getElementsByName("risposta")
-  const feedEl = document.getElementById("feed-question")
-  let rispostaSelezionata = ""
-
-  for (let i = 0; i < risposte.length; i++) {
-    if (risposte[i].checked) {
-      rispostaSelezionata = risposte[i].value
-      break
-    }
-  }
-
-  if (rispostaSelezionata === filteredQuestions[indiceDomande].correct_answer) {
-    punteggio++
-    feedEl.innerText="✅CORRECT!"
-    feedEl.style.color="green"
-  }else{
-    feedEl.innerText="❌WRONG!"
-    feedEl.style.color="red"
-  }
-  console.log("Punteggio:", punteggio)
-  indiceDomande++
-
-  setTimeout(() => {
-    feedEl.innerText=""
-  if (indiceDomande < filteredQuestions.length) {
-    filterQuestion()
-    timer()
-  } else {
-    localStorage.setItem("punteggioFinale", punteggio)
-    localStorage.setItem("numeroDomande", filteredQuestions.length)
-     window.location.href = "result.html"
-  }
-  }, 1000)
-}
-
-
-//currentQuestion()
+filtraDomandePerLivello()
