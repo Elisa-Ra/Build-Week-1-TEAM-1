@@ -194,6 +194,7 @@ const timer = function () {
 
   countDownTime = 20
   countDownElement.textContent = countDownTime
+  updateTimerChart()
 
   intervalId = setInterval(function () {
     countDownTime--
@@ -204,15 +205,6 @@ const timer = function () {
       clearInterval(intervalId)
       intervalId = null
       nextQuestion() //PASSA AUTOMATICAMENTE ALLA PROSSIMA DOMANDA
-      /* indiceDomande++
- 
-             if (indiceDomande >= questions.length) {
-                 countDownElement.textContent = "Quiz terminato"
-                 document.getElementById("domande").innerHTML = ""
-                 return //ferma la funzione timer
-             }
-             currentQuestion()
-             timer()*/
     }
   }, 1000)
 }
