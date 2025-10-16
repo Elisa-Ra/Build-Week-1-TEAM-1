@@ -42,17 +42,25 @@
         </li>
         <li>This exam will take approx.<b>0-5 minutes.</b></li>
       </ul>
+
       <form class="form-welcome">
+        <!--Seleziona la difficoltà-->
         <label for="livello">Scegli il livello di difficoltà</label>
-        <select id="livello">
+        <select id="livello" required>
+          <option value="">Select difficulty</option>
           <option value="easy">Easy</option>
           <option value="hard">Hard</option></select
         ><br />
+
         <input type="checkbox" id="checkbox_welcome" required />
         <label for="checkbox_welcome"
           >I promise to answer myself without help from anyone</label
         >
-        <button class="welcome_button luminoso" formaction="question.html">
+        <button
+          onclick="filterQuestion()"
+          class="welcome_button luminoso"
+          formaction="question.html"
+        >
           PROCEED
         </button>
       </form>

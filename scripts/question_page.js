@@ -126,13 +126,15 @@ const questions = [
   },
 
   //Aggiungiamo le domande difficili
+
   {
   type:"multiple",
   difficulty:"hard",
   category:"Science: Computers",
     question:"Which SQL keyword is used to fetch data from a database?",
     correct_answer:"SELECT",
-    incorrect_answers:["INDEX","VALUES","EXEC"]},
+    incorrect_answers:["INDEX","VALUES","EXEC"]
+  },
 
 {
   type:"boolean",
@@ -140,7 +142,8 @@ const questions = [
   category:"Science: Computers",
   question:"Time on Computers is measured via the EPOX System.",
   correct_answer:"False",
-  incorrect_answers:["True"]},
+  incorrect_answers:["True"]
+},
 
 {
   type:"multiple",
@@ -148,7 +151,8 @@ const questions = [
   category:"Science: Computers",
   question:"In networking, what does OSPF stand for?",
   correct_answer:"Open Shortest Path First",
-  incorrect_answers:["Order State Part First","Order Sense Ping Find","Open Signal Path Finder"]},
+  incorrect_answers:["Order State Part First","Order Sense Ping Find","Open Signal Path Finder"]
+},
 
 {
   type:"multiple",
@@ -156,7 +160,8 @@ const questions = [
   category:"Science: Computers",
   question:"The programming language &#039;Swift&#039; was created to replace what other programming language?",
   correct_answer:"Objective-C",
-  incorrect_answers:["C#","Ruby","C++"]},
+  incorrect_answers:["C#","Ruby","C++"]
+},
 
 {
   type:"multiple",
@@ -164,7 +169,8 @@ const questions = [
   category:"Science: Computers",
   question:"Which computer language would you associate Django framework with?",
   correct_answer:"Python",
-  incorrect_answers:["C#","C++","Java"]},
+  incorrect_answers:["C#","C++","Java"]
+},
 
 {
   type:"multiple",
@@ -172,7 +178,8 @@ const questions = [
   category:"Science: Computers",
   question:"How many values can a single byte represent?",
   correct_answer:"256",
-  incorrect_answers:["8","1","1024"]},
+  incorrect_answers:["8","1","1024"]
+},
 
 {
   type:"boolean",
@@ -180,7 +187,8 @@ const questions = [
   category:"Science: Computers",
   question:"In most programming languages, the operator ++ is equivalent to the statement &quot;+= 1&quot;.",
   correct_answer:"True",
-  incorrect_answers:["False"]},
+  incorrect_answers:["False"]
+},
 
 {
   type:"multiple",
@@ -188,7 +196,8 @@ const questions = [
   category:"Science: Computers",
   question:"How many kilobytes in one gigabyte (in decimal)?",
   correct_answer:"1000000",
-  incorrect_answers:["1024","1000","1048576"]},
+  incorrect_answers:["1024","1000","1048576"]
+},
 
 {
   type:"boolean",
@@ -196,15 +205,8 @@ const questions = [
   category:"Science: Computers",
   question:"The Windows ME operating system was released in the year 2000.",
   correct_answer:"True",
-  incorrect_answers:["False"]},
-
-{
-  type:"boolean",
-  difficulty:"hard",
-  category:"Science: Computers",
-  question:"RAM stands for Random Access Memory.",
-  correct_answer:"True",
-  incorrect_answers:["False"]},
+  incorrect_answers:["False"]
+},
 
 {
   type:"boolean",
@@ -212,7 +214,8 @@ const questions = [
   category:"Science: Computers",
   question:"JavaScript derives from a later version of Java",
   correct_answer:"False",
-  incorrect_answers:["True"]}
+  incorrect_answers:["True"]
+}
 ]
 
 window.onload = function () {
@@ -234,9 +237,35 @@ window.onload = function () {
 // Se stai mostrando tutte le domande nello stesso momento, controlla semplicemente se i radio button selezionati sono === correct_answer
 // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
-// GRAFICO
-let timerChart = null
 
+let timerChart = null
+let countDownTime = 20
+let indiceDomande = 0
+let intervalId = null
+let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
+let filteredQuestions = []
+
+//funzione filtro
+const filterQuestion = function(){
+const levelSelect = document.getElementById("livello")
+const valSelect = levelSelect.value
+
+const domandeFiltrate = questions.filter(q => q.difficulty === valSelect)
+
+ if (domandeFiltrate.length === 0) {
+    alert("Nessuna domanda trovata per questo livello!")
+    return
+  }
+
+filteredQuestions = domandeFiltrate
+indiceDomande = 0
+punteggio = 0
+console.log(filteredQuestions)
+currentQuestion()
+//timer()
+}
+
+// GRAFICO
 const updateTimerChart = function () {
   const elapsed = 20 - countDownTime
   const remaining = countDownTime
@@ -269,10 +298,6 @@ const updateTimerChart = function () {
 }
 
 //FUNZIONE PER IL TIMER
-let countDownTime = 20
-let indiceDomande = 0
-let intervalId = null
-let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 
 const countDownElement = document.getElementById("timer")
 
@@ -305,47 +330,11 @@ timer()
 
 //FUNZIONI DOMANDE
 
-const nextQuestion = function () {
-  const risposte = document.getElementsByName("risposta")
-  const feedEl = document.getElementById("feed-question")
-  let rispostaSelezionata = ""
-
-  for (let i = 0; i < risposte.length; i++) {
-    if (risposte[i].checked) {
-      rispostaSelezionata = risposte[i].value
-      break
-    }
-  }
-
-  if (rispostaSelezionata === questions[indiceDomande].correct_answer) {
-    punteggio++
-    feedEl.innerText="✅CORRECT!"
-    feedEl.style.color="green"
-  }else{
-    feedEl.innerText="❌WRONG!"
-    feedEl.style.color="red"
-  }
-  console.log("Punteggio:", punteggio)
-
-  indiceDomande++
-  if (indiceDomande < questions.length) {
-    currentQuestion()
-    timer()
-  } else {
-    localStorage.setItem("punteggioFinale", punteggio)
-    window.location.href = "result.html"
-
-    localStorage.setItem("numeroDomande", questions.length)
-  }
-}
-
-let arrayDiRisposte = []
-
 const currentQuestion = function () {
   const quizContainer = document.getElementById("domande")
   quizContainer.innerHTML = ""
 
-  const domanda = questions[indiceDomande].question
+  const domanda = filteredQuestions[indiceDomande].question
   const titoloDomande = document.createElement("h2")
   titoloDomande.innerText = domanda
 
@@ -353,8 +342,8 @@ const currentQuestion = function () {
   resultContainer.innerHTML = ""
 
   const arrayDiRisposte = [
-    questions[indiceDomande].correct_answer,
-    ...questions[indiceDomande].incorrect_answers,
+    filteredQuestions[indiceDomande].correct_answer,
+    ...filteredQuestions[indiceDomande].incorrect_answers,
   ]
   arrayDiRisposte.sort(() => Math.random() - 0.5) // mescola le risposte
 
@@ -369,13 +358,56 @@ const currentQuestion = function () {
   }
 
   resultContainer.appendChild(risposte)
-
   quizContainer.appendChild(titoloDomande)
+
   const counterQuestion = document.getElementById("p_question")
 
   counterQuestion.innerText = `QUESTION ${indiceDomande + 1} / ${
-    questions.length
+    filteredQuestions.length
   }`
+
+   risposte.querySelectorAll("input").forEach(input => {
+    input.addEventListener("click", nextQuestion)
+  })
 }
 
-currentQuestion()
+let arrayDiRisposte = []
+
+const nextQuestion = function () {
+  const risposte = document.getElementsByName("risposta")
+  const feedEl = document.getElementById("feed-question")
+  let rispostaSelezionata = ""
+
+  for (let i = 0; i < risposte.length; i++) {
+    if (risposte[i].checked) {
+      rispostaSelezionata = risposte[i].value
+      break
+    }
+  }
+
+  if (rispostaSelezionata === filteredQuestions[indiceDomande].correct_answer) {
+    punteggio++
+    feedEl.innerText="✅CORRECT!"
+    feedEl.style.color="green"
+  }else{
+    feedEl.innerText="❌WRONG!"
+    feedEl.style.color="red"
+  }
+  console.log("Punteggio:", punteggio)
+  indiceDomande++
+
+  setTimeout(() => {
+    feedEl.innerText=""
+  if (indiceDomande < filteredQuestions.length) {
+    filterQuestion()
+    timer()
+  } else {
+    localStorage.setItem("punteggioFinale", punteggio)
+    localStorage.setItem("numeroDomande", filteredQuestions.length)
+     window.location.href = "result.html"
+  }
+  }, 1000)
+}
+
+
+//currentQuestion()
