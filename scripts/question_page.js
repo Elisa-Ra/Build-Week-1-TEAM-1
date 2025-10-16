@@ -380,9 +380,9 @@ const currentQuestion = function () {
   const risposte = document.createElement("div")
   for (let i = 0; i < arrayDiRisposte.length; i++) {
     risposte.innerHTML += `
-    <div class="div_risposte">
-    <input type="radio" onclick="nextQuestion()" name="risposta"  id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
-    <label class= "class_bottone" for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
+    <label class="div_risposte" >
+    <input type="radio" onclick="nextQuestion()" name="risposta" class="bottone_risp" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
+    <span class= "class_bottone" for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
     </div>
     `
   }

@@ -444,3 +444,8 @@ fatto in js*/
 #indice_rosa {
   color: #d20094;
 }
+.bottone_risp {
+  padding: 20%;
+  cursor: pointer;
+  display: none;
+}
