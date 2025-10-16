@@ -274,7 +274,7 @@ const updateTimerChart = function () {
     datasets: [
       {
         data: [elapsed, remaining],
-        backgroundColor: ["rgba(185, 184, 184, 0.67)", "#00ffff"],
+        backgroundColor: ["rgba(185, 184, 184, 0.1)", "#00ffff"],
         borderWidth: 0,
       },
     ],
@@ -310,7 +310,7 @@ const timer = function () {
   countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
         <p class="numTimer">${countDownTime}</p>
         <p class="scrittaTimer"> REMAINIG</p>`
-        updateTimerChart()
+  updateTimerChart()
 
   intervalId = setInterval(function () {
     countDownTime--
@@ -336,7 +336,8 @@ const currentQuestion = function () {
 
   const domanda = filteredQuestions[indiceDomande].question
   const titoloDomande = document.createElement("h2")
-  titoloDomande.innerText = domanda
+  titoloDomande.classList.add("titolo_domande")
+  titoloDomande.innerHTML = domanda
 
   const resultContainer = document.getElementById("risposte-div")
   resultContainer.innerHTML = ""
@@ -350,10 +351,10 @@ const currentQuestion = function () {
   const risposte = document.createElement("div")
   for (let i = 0; i < arrayDiRisposte.length; i++) {
     risposte.innerHTML += `
-    
-    <input type="radio" onclick="nextQuestion()" name="risposta" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
-    <label for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
-      
+    <label class="div_risposte" >
+    <input type="radio" onclick="nextQuestion()" name="risposta" class="bottone_risp" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
+    <span class= "class_bottone" for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
+    </div>
     `
   }
 
@@ -362,9 +363,9 @@ const currentQuestion = function () {
 
   const counterQuestion = document.getElementById("p_question")
 
-  counterQuestion.innerText = `QUESTION ${indiceDomande + 1} / ${
-    filteredQuestions.length
-  }`
+  counterQuestion.innerHTML = `QUESTION ${
+    indiceDomande + 1
+  } <b id="indice_rosa">/ ${filteredQuestions.length}</b>`
 
    risposte.querySelectorAll("input").forEach(input => {
     input.addEventListener("click", nextQuestion)
