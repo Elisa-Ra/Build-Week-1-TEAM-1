@@ -348,8 +348,46 @@ fatto in js*/
   font-weight: bold;
   font-size: 18px;
 }
-/* QUESTIONS CHART*/
+
+/* QUESTION PAGE CHART*/
+
+/* grafico timer */
 #timerChart {
-  height: 500px;
-  width: 500px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  margin: 0 auto;
+  z-index: auto;
+}
+/* contenitore del timer di question page */
+.chart_timer {
+  width: 100%;
+  max-width: 40vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 40px;
+}
+#timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+}
+.numTimer {
+  font-size: 40px;
+  font-family: "Outfit", sans-serif;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.scrittaTimer {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 13px;
 }
