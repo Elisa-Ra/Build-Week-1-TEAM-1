@@ -391,3 +391,56 @@ fatto in js*/
   margin-top: 0;
   font-size: 13px;
 }
+
+/* titolo domande */
+.titolo_domande {
+  font-size: 40px;
+  text-align: center;
+}
+
+.contenitoreDomande {
+  margin-top: 30vh;
+  text-align: center;
+}
+
+#domande {
+  width: 60%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.question_p {
+  margin-top: 10vh;
+  text-align: center;
+}
+
+#feed-question {
+  margin-top: 5vh;
+}
+
+/* risposte */
+.div_risposte {
+  display: inline-block;
+  background-color: rgba(185, 184, 184, 0.1);
+  width: 15%;
+  padding: 1%;
+  border-radius: 25px;
+  border-top: 2.5px solid white;
+  border-bottom: 2.5px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10vh;
+  margin-left: 2vh;
+}
+
+.div_risposte:hover {
+  background-color: #d20094;
+  cursor: pointer;
+}
+.div_risposte:checked {
+  background-color: #d20094;
+  cursor: pointer;
+}
+
+#indice_rosa {
+  color: #d20094;
+}
