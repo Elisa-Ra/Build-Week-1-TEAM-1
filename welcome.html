@@ -45,17 +45,24 @@
 
       <form class="form-welcome">
         <div class="div_form">
-          <label for="livello">Choose a difficulty level</label>
           <select id="livello" required>
-            <option value="">Select difficulty</option>
-            <option value="easy">Easy</option>
-            <option value="hard">Hard</option></select
+            <option value="">Select difficulty level</option>
+            <option class="hover-level" value="easy">Easy</option>
+            <option class="hover-level" value="hard">Hard</option></select
           ><br />
         </div>
-        <input type="checkbox" id="checkbox_welcome" required />
-        <label for="checkbox_welcome"
-          >I promise to answer myself without help from anyone</label
-        >
+
+        <div class="container inline">
+          <input type="checkbox" id="checkbox_welcome" required />
+          <label class="checkmark" for="checkbox_welcome"></label>
+        </div>
+
+        <div class="inline div_p">
+          <p class="p-inline">
+            I promise to answer myself without help from anyone
+          </p>
+        </div>
+
         <button
           class="welcome_button luminoso"
           onclick="salvaLivello()"
