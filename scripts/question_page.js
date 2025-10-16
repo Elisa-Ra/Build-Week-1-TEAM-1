@@ -218,15 +218,6 @@ const questions = [
     type: "boolean",
     difficulty: "hard",
     category: "Science: Computers",
-    question: "RAM stands for Random Access Memory.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-
-  {
-    type: "boolean",
-    difficulty: "hard",
-    category: "Science: Computers",
     question: "JavaScript derives from a later version of Java",
     correct_answer: "False",
     incorrect_answers: ["True"],
@@ -286,6 +277,26 @@ const updateTimerChart = function () {
   }
 }
 
+//FILTRA LE DOMANDE
+
+let filteredQuestions = []
+
+function filtraDomandePerLivello() {
+  const livello = localStorage.getItem("livelloSelezionato")
+
+  filteredQuestions = questions.filter((q) => q.difficulty === livello)
+
+  if (filteredQuestions.length === 0) {
+    alert("Nessuna domanda trovata per il livello selezionato!")
+    return
+  }
+
+  indiceDomande = 0
+  punteggio = 0
+  currentQuestion()
+  timer()
+}
+
 //FUNZIONE PER IL TIMER
 let countDownTime = 20
 let indiceDomande = 0
@@ -335,7 +346,7 @@ const nextQuestion = function () {
     }
   }
 
-  if (rispostaSelezionata === questions[indiceDomande].correct_answer) {
+  if (rispostaSelezionata === filteredQuestions[indiceDomande].correct_answer) {
     punteggio++
     feedEl.innerText = "✅CORRECT!"
     feedEl.style.color = "green"
@@ -346,14 +357,14 @@ const nextQuestion = function () {
   console.log("Punteggio:", punteggio)
 
   indiceDomande++
-  if (indiceDomande < questions.length) {
+  if (indiceDomande < filteredQuestions.length) {
     currentQuestion()
     timer()
   } else {
     localStorage.setItem("punteggioFinale", punteggio)
     window.location.href = "result.html"
 
-    localStorage.setItem("numeroDomande", questions.length)
+    localStorage.setItem("numeroDomande", filteredQuestions.length)
   }
 }
 
@@ -363,7 +374,7 @@ const currentQuestion = function () {
   const quizContainer = document.getElementById("domande")
   quizContainer.innerHTML = ""
 
-  const domanda = questions[indiceDomande].question
+  const domanda = filteredQuestions[indiceDomande].question
   const titoloDomande = document.createElement("h2")
   titoloDomande.classList.add("titolo_domande")
   titoloDomande.innerHTML = domanda
@@ -372,8 +383,8 @@ const currentQuestion = function () {
   resultContainer.innerHTML = ""
 
   const arrayDiRisposte = [
-    questions[indiceDomande].correct_answer,
-    ...questions[indiceDomande].incorrect_answers,
+    filteredQuestions[indiceDomande].correct_answer,
+    ...filteredQuestions[indiceDomande].incorrect_answers,
   ]
   arrayDiRisposte.sort(() => Math.random() - 0.5) // mescola le risposte
 
@@ -394,7 +405,7 @@ const currentQuestion = function () {
 
   counterQuestion.innerHTML = `QUESTION ${
     indiceDomande + 1
-  } <b id="indice_rosa">/ ${questions.length}</b>`
+  } <b id="indice_rosa">/ ${filteredQuestions.length}</b>`
 }
 
-currentQuestion()
+filtraDomandePerLivello()
