@@ -124,6 +124,113 @@ const questions = [
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
+
+  //Aggiungiamo le domande difficili
+  {
+    type: "multiple",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "Which SQL keyword is used to fetch data from a database?",
+    correct_answer: "SELECT",
+    incorrect_answers: ["INDEX", "VALUES", "EXEC"],
+  },
+
+  {
+    type: "boolean",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "Time on Computers is measured via the EPOX System.",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
+
+  {
+    type: "multiple",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "In networking, what does OSPF stand for?",
+    correct_answer: "Open Shortest Path First",
+    incorrect_answers: [
+      "Order State Part First",
+      "Order Sense Ping Find",
+      "Open Signal Path Finder",
+    ],
+  },
+
+  {
+    type: "multiple",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question:
+      "The programming language &#039;Swift&#039; was created to replace what other programming language?",
+    correct_answer: "Objective-C",
+    incorrect_answers: ["C#", "Ruby", "C++"],
+  },
+
+  {
+    type: "multiple",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question:
+      "Which computer language would you associate Django framework with?",
+    correct_answer: "Python",
+    incorrect_answers: ["C#", "C++", "Java"],
+  },
+
+  {
+    type: "multiple",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "How many values can a single byte represent?",
+    correct_answer: "256",
+    incorrect_answers: ["8", "1", "1024"],
+  },
+
+  {
+    type: "boolean",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question:
+      "In most programming languages, the operator ++ is equivalent to the statement &quot;+= 1&quot;.",
+    correct_answer: "True",
+    incorrect_answers: ["False"],
+  },
+
+  {
+    type: "multiple",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "How many kilobytes in one gigabyte (in decimal)?",
+    correct_answer: "1000000",
+    incorrect_answers: ["1024", "1000", "1048576"],
+  },
+
+  {
+    type: "boolean",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "The Windows ME operating system was released in the year 2000.",
+    correct_answer: "True",
+    incorrect_answers: ["False"],
+  },
+
+  {
+    type: "boolean",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "RAM stands for Random Access Memory.",
+    correct_answer: "True",
+    incorrect_answers: ["False"],
+  },
+
+  {
+    type: "boolean",
+    difficulty: "hard",
+    category: "Science: Computers",
+    question: "JavaScript derives from a later version of Java",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
 ]
 
 window.onload = function () {
@@ -156,7 +263,7 @@ const updateTimerChart = function () {
     datasets: [
       {
         data: [elapsed, remaining],
-        backgroundColor: ["rgba(185, 184, 184, 0.67)", "#00ffff"],
+        backgroundColor: ["rgba(185, 184, 184, 0.1)", "#00ffff"],
         borderWidth: 0,
       },
     ],
@@ -167,7 +274,7 @@ const updateTimerChart = function () {
       type: "doughnut",
       data: data,
       options: {
-        cutoutPercentage: 70,
+        cutoutPercentage: 80,
         plugins: {
           tooltip: { enabled: false },
         },
@@ -193,26 +300,22 @@ const timer = function () {
   }
 
   countDownTime = 20
-  countDownElement.textContent = countDownTime
+  countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
+        <p class="numTimer">${countDownTime}</p>
+        <p class="scrittaTimer"> REMAINIG</p>`
+  updateTimerChart()
 
   intervalId = setInterval(function () {
     countDownTime--
-    countDownElement.textContent = countDownTime
+    countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
+        <p class="numTimer">${countDownTime}</p>
+        <p class="scrittaTimer"> REMAINIG</p>`
     updateTimerChart()
 
     if (countDownTime <= 0) {
       clearInterval(intervalId)
       intervalId = null
       nextQuestion() //PASSA AUTOMATICAMENTE ALLA PROSSIMA DOMANDA
-      /* indiceDomande++
- 
-             if (indiceDomande >= questions.length) {
-                 countDownElement.textContent = "Quiz terminato"
-                 document.getElementById("domande").innerHTML = ""
-                 return //ferma la funzione timer
-             }
-             currentQuestion()
-             timer()*/
     }
   }, 1000)
 }
@@ -222,6 +325,7 @@ timer()
 
 const nextQuestion = function () {
   const risposte = document.getElementsByName("risposta")
+  const feedEl = document.getElementById("feed-question")
   let rispostaSelezionata = ""
 
   for (let i = 0; i < risposte.length; i++) {
@@ -233,6 +337,11 @@ const nextQuestion = function () {
 
   if (rispostaSelezionata === questions[indiceDomande].correct_answer) {
     punteggio++
+    feedEl.innerText = "✅CORRECT!"
+    feedEl.style.color = "green"
+  } else {
+    feedEl.innerText = "❌WRONG!"
+    feedEl.style.color = "red"
   }
   console.log("Punteggio:", punteggio)
 
@@ -256,7 +365,8 @@ const currentQuestion = function () {
 
   const domanda = questions[indiceDomande].question
   const titoloDomande = document.createElement("h2")
-  titoloDomande.innerText = domanda
+  titoloDomande.classList.add("titolo_domande")
+  titoloDomande.innerHTML = domanda
 
   const resultContainer = document.getElementById("risposte-div")
   resultContainer.innerHTML = ""
@@ -270,10 +380,10 @@ const currentQuestion = function () {
   const risposte = document.createElement("div")
   for (let i = 0; i < arrayDiRisposte.length; i++) {
     risposte.innerHTML += `
-    
-    <input type="radio" onclick="nextQuestion()" name="risposta" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
-    <label for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
-      
+    <label class="div_risposte" >
+    <input type="radio" onclick="nextQuestion()" name="risposta" class="bottone_risp" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
+    <span class= "class_bottone" for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
+    </div>
     `
   }
 
@@ -282,9 +392,9 @@ const currentQuestion = function () {
   quizContainer.appendChild(titoloDomande)
   const counterQuestion = document.getElementById("p_question")
 
-  counterQuestion.innerText = `QUESTION ${indiceDomande + 1} / ${
-    questions.length
-  }`
+  counterQuestion.innerHTML = `QUESTION ${
+    indiceDomande + 1
+  } <b id="indice_rosa">/ ${questions.length}</b>`
 }
 
 currentQuestion()
