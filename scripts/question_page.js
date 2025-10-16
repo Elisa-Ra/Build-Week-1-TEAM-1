@@ -124,8 +124,6 @@ const questions = [
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
-<<<<<<< Updated upstream
-=======
 
   //Aggiungiamo le domande difficili
   {
@@ -233,7 +231,6 @@ const questions = [
     correct_answer: "False",
     incorrect_answers: ["True"],
   },
->>>>>>> Stashed changes
 ]
 
 window.onload = function () {
@@ -306,10 +303,7 @@ const timer = function () {
   countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
         <p class="numTimer">${countDownTime}</p>
         <p class="scrittaTimer"> REMAINIG</p>`
-<<<<<<< Updated upstream
-=======
   updateTimerChart()
->>>>>>> Stashed changes
 
   intervalId = setInterval(function () {
     countDownTime--
@@ -342,14 +336,11 @@ const nextQuestion = function () {
 
   if (rispostaSelezionata === questions[indiceDomande].correct_answer) {
     punteggio++
-<<<<<<< Updated upstream
-=======
     feedEl.innerText = "✅CORRECT!"
     feedEl.style.color = "green"
   } else {
     feedEl.innerText = "❌WRONG!"
     feedEl.style.color = "red"
->>>>>>> Stashed changes
   }
   console.log("Punteggio:", punteggio)
 
