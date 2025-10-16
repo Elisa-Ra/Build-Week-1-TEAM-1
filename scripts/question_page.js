@@ -126,6 +126,7 @@ const questions = [
   },
 
   //Aggiungiamo le domande difficili
+
   {
     type: "multiple",
     difficulty: "hard",
@@ -195,8 +196,7 @@ const questions = [
     correct_answer: "True",
     incorrect_answers: ["False"],
   },
-
-  {
+{
     type: "multiple",
     difficulty: "hard",
     category: "Science: Computers",
@@ -224,6 +224,7 @@ const questions = [
   },
 ]
 
+
 window.onload = function () {
   // TIPS:
   // SE MOSTRI TUTTE LE RISPOSTE ASSIEME IN FORMATO LISTA:
@@ -243,9 +244,17 @@ window.onload = function () {
 // Se stai mostrando tutte le domande nello stesso momento, controlla semplicemente se i radio button selezionati sono === correct_answer
 // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
-// GRAFICO
-let timerChart = null
 
+let timerChart = null
+let countDownTime = 20
+let indiceDomande = 0
+let intervalId = null
+let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
+
+
+//funzione filtros
+
+// GRAFICO
 const updateTimerChart = function () {
   const elapsed = 20 - countDownTime
   const remaining = countDownTime
@@ -298,10 +307,6 @@ function filtraDomandePerLivello() {
 }
 
 //FUNZIONE PER IL TIMER
-let countDownTime = 20
-let indiceDomande = 0
-let intervalId = null
-let punteggio = 0 //variabile dove ciclare il punteggio ottenuto
 
 const countDownElement = document.getElementById("timer")
 
@@ -399,8 +404,8 @@ const currentQuestion = function () {
   }
 
   resultContainer.appendChild(risposte)
-
   quizContainer.appendChild(titoloDomande)
+
   const counterQuestion = document.getElementById("p_question")
 
   counterQuestion.innerHTML = `QUESTION ${
