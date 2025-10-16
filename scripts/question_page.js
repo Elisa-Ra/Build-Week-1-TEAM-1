@@ -285,6 +285,7 @@ const timer = function () {
   countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
         <p class="numTimer">${countDownTime}</p>
         <p class="scrittaTimer"> REMAINIG</p>`
+        updateTimerChart()
 
   intervalId = setInterval(function () {
     countDownTime--
