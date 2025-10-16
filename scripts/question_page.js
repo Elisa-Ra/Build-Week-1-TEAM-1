@@ -325,6 +325,7 @@ timer()
 
 const nextQuestion = function () {
   const risposte = document.getElementsByName("risposta")
+  const feedEl = document.getElementById("feed-question")
   let rispostaSelezionata = ""
 
   for (let i = 0; i < risposte.length; i++) {
