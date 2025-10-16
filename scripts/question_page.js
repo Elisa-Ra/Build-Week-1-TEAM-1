@@ -167,7 +167,7 @@ const updateTimerChart = function () {
       type: "doughnut",
       data: data,
       options: {
-        cutoutPercentage: 70,
+        cutoutPercentage: 80,
         plugins: {
           tooltip: { enabled: false },
         },
@@ -193,11 +193,15 @@ const timer = function () {
   }
 
   countDownTime = 20
-  countDownElement.textContent = countDownTime
+  countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
+        <p class="numTimer">${countDownTime}</p>
+        <p class="scrittaTimer"> REMAINIG</p>`
 
   intervalId = setInterval(function () {
     countDownTime--
-    countDownElement.textContent = countDownTime
+    countDownElement.innerHTML = `<p class="scrittaTimer">SECONDS</p> 
+        <p class="numTimer">${countDownTime}</p>
+        <p class="scrittaTimer"> REMAINIG</p>`
     updateTimerChart()
 
     if (countDownTime <= 0) {
