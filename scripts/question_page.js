@@ -196,7 +196,7 @@ const questions = [
     correct_answer: "True",
     incorrect_answers: ["False"],
   },
-{
+  {
     type: "multiple",
     difficulty: "hard",
     category: "Science: Computers",
@@ -361,21 +361,25 @@ const nextQuestion = function () {
   }
   console.log("Punteggio:", punteggio)
 
-  indiceDomande++
-  if (indiceDomande < filteredQuestions.length) {
-    currentQuestion()
-    timer()
-  } else {
-    localStorage.setItem("punteggioFinale", punteggio)
-    window.location.href = "result.html"
+  setTimeout(() => {
+    indiceDomande++
+    if (indiceDomande < filteredQuestions.length) {
 
-    localStorage.setItem("numeroDomande", filteredQuestions.length)
-  }
+      currentQuestion()
+      timer()
+    } else {
+      localStorage.setItem("punteggioFinale", punteggio)
+      window.location.href = "result.html"
+
+      localStorage.setItem("numeroDomande", filteredQuestions.length)
+    }
+
+  }, 1500)
 }
-
 let arrayDiRisposte = []
 
 const currentQuestion = function () {
+  document.getElementById("feed-question").innerText = ""
   const quizContainer = document.getElementById("domande")
   quizContainer.innerHTML = ""
 
@@ -398,8 +402,9 @@ const currentQuestion = function () {
     risposte.innerHTML += `
     <label class="div_risposte" >
     <input type="radio" onclick="nextQuestion()" name="risposta" class="bottone_risp" id="bottone_risposta${i}" value="${arrayDiRisposte[i]}" />
-    <span class= "class_bottone" for="bottone_risposta${i}">${arrayDiRisposte[i]}</label>
-    </div>
+    <span class= "class_bottone" for="bottone_risposta${i}">${arrayDiRisposte[i]}</span>
+    </label>
+   
     `
   }
 
@@ -408,9 +413,17 @@ const currentQuestion = function () {
 
   const counterQuestion = document.getElementById("p_question")
 
-  counterQuestion.innerHTML = `QUESTION ${
-    indiceDomande + 1
-  } <b id="indice_rosa">/ ${filteredQuestions.length}</b>`
+  counterQuestion.innerHTML = `QUESTION ${indiceDomande + 1
+    } <b id="indice_rosa">/ ${filteredQuestions.length}</b>`
+
+  const inputs = document.querySelectorAll('input[name="risposta"]')
+  inputs.forEach(input => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll('.div_risposte').forEach(label => label.classList.remove('active'))
+      input.closest('.div_risposte').classList.add('active')
+    })
+  })
+
 }
 
 filtraDomandePerLivello()
