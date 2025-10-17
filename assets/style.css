@@ -70,15 +70,20 @@ b {
 /* classe per la risposta selezionata -> gradiente fucsia*/
 .answer-color {
   background: #900080;
-  background: linear-gradient(0deg,
-      rgba(144, 0, 128, 1) 0%,
-      rgba(210, 0, 148, 1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(144, 0, 128, 1) 0%,
+    rgba(210, 0, 148, 1) 100%
+  );
 }
-
+/* WELCOME PAGE */
+#main_welcome {
+  padding-left: 5vh;
+  width: 70%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
 /* LISTA WELCOME PAGE */
-/*#welcome-page {
-  padding-left: 4%;
-}*/
 
 #welcome-titolo {
   margin-top: 8vh;
@@ -465,7 +470,6 @@ fatto in js*/
   cursor: pointer;
 }
 
-
 #indice_rosa {
   color: #d20094;
 }
@@ -533,12 +537,12 @@ fatto in js*/
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
+.container:hover input ~ .checkmark {
   background-color: #00ffff;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked~.checkmark {
+.container input:checked ~ .checkmark {
   background-color: #002b4e;
 }
 
@@ -550,7 +554,7 @@ fatto in js*/
 }
 
 /* Show the checkmark when checked */
-.container input:checked~.checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
 }
 
